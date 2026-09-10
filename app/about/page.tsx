@@ -29,7 +29,7 @@ export default function AboutPage() {
             <p className="mt-4 text-base leading-relaxed text-ink-300 light:text-ink-500">
               Founded in Dhaka and now working with clients across logistics, fintech, and
               manufacturing, we keep our team deliberately small and senior — every engagement
-              is staffed by people who've shipped models to production, not just notebooks.
+              is staffed by people who&apos;ve shipped models to production, not just notebooks.
             </p>
 
             <div className="mt-10 grid grid-cols-3 gap-6 border-t border-white/10 pt-8 light:border-ink-900/10">

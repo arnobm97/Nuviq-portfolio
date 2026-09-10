@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --card-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.02), 0 20px 40px -24px rgba(15, 23, 42, 0.18);
+    color-scheme: dark;
+  }
+
+  .light {
+    --card-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.02), 0 20px 40px -24px rgba(15, 23, 42, 0.18);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-navy-950 text-ink-100 antialiased;
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  .light body {
+    @apply bg-paper-50 text-ink-900;
+  }
+
+  ::selection {
+    background-color: rgba(59, 130, 246, 0.35);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(148, 163, 184, 0.25);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+@layer utilities {
+  .container-px {
+    @apply px-6 sm:px-8 lg:px-10;
+  }
+
+  .text-gradient {
+    @apply bg-brand-gradient bg-clip-text text-transparent;
+  }
+
+  .glass-surface {
+    @apply border border-white/10 bg-navy-900/60 backdrop-blur-xl;
+  }
+
+  .light .glass-surface {
+    @apply border-ink-900/5 bg-white/70;
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-white/[0.07] bg-navy-800/60 shadow-card;
+  }
+
+  .light .card-surface {
+    @apply border-ink-900/[0.06] bg-white;
+    box-shadow: var(--card-shadow);
+  }
+
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+}
+
+/* app/globals.css - Add these styles */
+
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  75% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-ping-slow {
+  animation: ping-slow 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
